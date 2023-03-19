@@ -11,7 +11,7 @@ describe("Locators XPath", () => {
         cy.xpath('//pre[@class=" language-html"]');
     });
 
-    it('find by class (middle and spaces)', () => {
+    it('find by Class Attribute (middle and spaces)', () => {
         cy.xpath(
             "//button[contains(concat(' ', @class, ' '), ' btn-warning ')]"
         ).should("have.css", "background-color", "rgb(255, 193, 7)");
