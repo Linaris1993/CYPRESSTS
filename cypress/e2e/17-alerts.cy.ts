@@ -42,6 +42,6 @@ describe("Alerts", () => {
         );
     cy.contains("button", "Click for JS Prompt").click();
         })
-        cy.get('p#result').should('have.text', 'You entered: "This is a hello world from the promt alert"')
+        cy.get('p#result').should('have.text', 'You entered: This is a hello world from the promt alert')
     });
 });
