@@ -13,8 +13,10 @@
   "author": "Lina",
   "license": "ISC",
   "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.2.3",
+    "@testing-library/cypress": "^9.0.0",
     "cy-verify-downloads": "^0.1.13",
-    "cypress": "^12.8.0",
+    "cypress": "^12.9.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-real-events": "^1.7.6",
     "cypress-xpath": "^2.0.1",

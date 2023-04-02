@@ -1,4 +1,6 @@
 import 'cypress-file-upload';
+import '@testing-library/cypress/add-commands';
+import '@4tw/cypress-drag-drop';
 /// <reference types="cypress" />
 // ***********************************************
 // This example commands.ts shows you how to
