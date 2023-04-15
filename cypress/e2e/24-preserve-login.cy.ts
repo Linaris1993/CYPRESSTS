@@ -1,4 +1,4 @@
-
+Cypress.session.clearAllSavedSessions();
 
 describe("Login Page", () => {
     beforeEach(() => {
