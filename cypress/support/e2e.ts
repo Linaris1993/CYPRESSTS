@@ -19,18 +19,19 @@ require('cy-verify-downloads').addCustomCommand();
 import './commands';
 import 'cypress-real-events/support';
 import './exceptions';
+import 'cypress-mochawesome-reporter/register';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
 beforeEach(() => {
-    cy.log("Hello I'm a global hook before Each Hook")
-    cy.session('mySession', () => {
-        cy.visit(`${Cypress.env("demoQA")}/login`);
-        cy.get('#userName').type('test');
-        cy.get('#password').type('Test1234*');
-        cy.get('#login').click();
-        cy.url().should('contain', 'profile');
-    })
+    // cy.log("Hello I'm a global hook before Each Hook")
+    // cy.session('mySession', () => {
+    //     cy.visit(`${Cypress.env("demoQA")}/login`);
+    //     cy.get('#userName').type('test');
+    //     cy.get('#password').type('Test1234*');
+    //     cy.get('#login').click();
+    //     cy.url().should('contain', 'profile');
+    //})
 });
 
 after(() => {

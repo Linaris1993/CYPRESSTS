@@ -4,7 +4,8 @@
   "description": "Cypress TS project",
   "main": "index.js",
   "scripts": {
-    "runner": "cypress open --e2e --browser chrome --config baseUrl=http://www.uitestingplayground.com --env demoVar=Hello_From_Package_File"
+    "runner": "cypress open --e2e --browser chrome --config baseUrl=http://www.uitestingplayground.com --env demoVar=Hello_From_Package_File",
+    "cypress-run": "cypress run --e2e --browser firefox --headed --spec cypress/e2e/26-customCommand.cy.ts"
   },
   "keywords": [
     "cypress",
@@ -18,6 +19,7 @@
     "cy-verify-downloads": "^0.1.13",
     "cypress": "^12.9.0",
     "cypress-file-upload": "^5.0.8",
+    "cypress-mochawesome-reporter": "^3.4.0",
     "cypress-real-events": "^1.7.6",
     "cypress-xpath": "^2.0.1",
     "typescript": "^4.9.5"
