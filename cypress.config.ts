@@ -5,6 +5,8 @@ const xlsx = require("node-xlsx").default();
 const fs = require("fs"); //for file
 const path = require("path"); //for file path
 
+//mySQL requirements
+const mysql = require("mysql");
 
 export default defineConfig({
   e2e: {
@@ -28,6 +30,11 @@ export default defineConfig({
         },
       });
 
+      on("task", {
+        queryDb: (query) => {
+          return queryTestDb(query, config);
+        },
+      });
       //for the mochawesome reporter
       require('cypress-mochawesome-reporter/plugin')(on);
 
@@ -37,6 +44,12 @@ export default defineConfig({
       demoQA: "https://demoqa.com",
       theInternet: "https://the-internet.herokuapp.com/",
       Angular: "https://www.globalsqa.com/",
+      db: {
+        host: "localhost",
+        user: "root",
+        passowrd: "",
+        database: "cypress_test",
+      },
       mobileViewportWidthBreakpoint: 400,
     },
   },
@@ -58,3 +71,21 @@ export default defineConfig({
     video: true,
     screenshotOnRunFailure: true,
 });
+
+function queryTestDb(query, config) {
+  //creates a new mysql connection using credentials from cypress.json env's
+  const connection = mysql.createConnection(config.env.db);
+  //start connection to db
+  connection.connect();
+  //exec query + disconnect to db as a Promise
+  return new Promise((resolve, reject) => {
+    connection.query(query, (error, results) => {
+      if (error) reject(error);
+      else{
+        connection.end();
+        //console.log(results);
+        return resolve(results)
+      }
+    });
+  });
+}
