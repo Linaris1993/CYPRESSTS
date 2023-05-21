@@ -5,6 +5,7 @@ describe("MySQL database testing", () => {
             "CREATE TABLE movies(title VARCHAR(50) NOT NULL, genre VARCHAR(30) NOT NULL, director VACHAR(60) NOT NULL, release_year INT NOT NULL, PRIMARY KEY(title));"
         )
     });
+
     it("Insert a movie", function() {
         cy.task(
             "queryDb", 
