@@ -50,6 +50,7 @@ export default defineConfig({
         passowrd: "",
         database: "cypress_test",
       },
+      //Mobile validation
       mobileViewportWidthBreakpoint: 400,
     },
   },
