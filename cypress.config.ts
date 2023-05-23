@@ -4,14 +4,14 @@ const { verifyDownloadTasks } = require('cy-verify-downloads');
 //const xlsx = require("node-xlsx").default();
 const fs = require("fs"); //for file
 const path = require("path"); //for file path
-
 //mySQL requirements
 const mysql = require("mysql");
+//Faker
+const { faker } = require("@faker-js/faker");
 
 export default defineConfig({
   e2e: {
     baseUrl: "http://www.uitestingplayground.com",
-    experimentalSessionAndOrigin: true,
     setupNodeEvents(on, config) {
       // verify download import
       on('task', verifyDownloadTasks);
@@ -37,7 +37,19 @@ export default defineConfig({
       });
       //for the mochawesome reporter
       require('cypress-mochawesome-reporter/plugin')(on);
-
+      //Faker
+      on("task", {
+        freshUser() {
+          let user = {
+            userName: faker.name.firstName(),
+            email: faker.name.email(),
+            password: faker.name.password(),
+            registeredAt: faker.name.past(),
+            vehicle: faker.vehicle.vehicle()
+          };
+          return user;
+        }
+      })
     },
     env: {
       demoVar: "Hello from the Cypress.config.ts ",
