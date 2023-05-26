@@ -83,6 +83,7 @@ export default defineConfig({
     },
     video: true,
     screenshotOnRunFailure: true,
+    projectId: "8h8qhd",
 });
 
 function queryTestDb(query, config) {
