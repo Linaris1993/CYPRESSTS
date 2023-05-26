@@ -37,11 +37,17 @@ declare global {
   }
 }
 
-Cypress.Commands.add('login', (username:string, password:string) => {
+Cypress.Commands.add("login", (username:string, password:string) => {
  cy.get('#userName').type(username);
  cy.get('#password').type(password);
  cy.get('#login').click();
 });
+
+Cypress.Commands.add("safeLogin", (username:string, password:string) => {
+  cy.get('#userName').type(username);
+  cy.get('#password').type(password, {log: false});
+  cy.get('#login').click();
+ });
 
 Cypress.Commands.add("parseXlsx", (inputFile) => {
   return cy.task("parseXlsx", { filePath: inputFile });
